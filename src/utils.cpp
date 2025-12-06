@@ -43,11 +43,11 @@ static std::vector<std::string> ReadLines(const std::filesystem::path& path) {
     return lines;
 }
 
-// --- Public AoC loader
-std::vector<std::string> LoadInput(int day, Part part) {
+// Loads input from a file with name such as "inputs/01/a.txt"
+std::vector<std::string> LoadInput(Day day, Part part) {
     const char partChar = (part == Part::A ? 'a' : 'b');
 
-    const std::string dayDirectory = std::format("{:02d}", day);
+    const std::string dayDirectory = std::format("{:02d}", day.value);
     const std::string filename = std::format("{}.txt", partChar);
     const std::filesystem::path path = std::filesystem::path("inputs") / dayDirectory / filename;
 
@@ -57,7 +57,5 @@ std::vector<std::string> LoadInput(int day, Part part) {
         throw std::runtime_error(std::format("Failed to read input file '{}': {}", path.string(), e.what()));
     }
 }
-
-
 
 } // namespace Util

@@ -31,36 +31,37 @@ int countZeroDials(int from, int to) {
     return std::abs(from / 100 - to / 100);
 }
 
+// Turns eg. "R5" -> 5, and "L5" -> -5 (R = positive delta, L = negative)
+int convertLineToDelta(const std::string_view& line) {
+    int mag = 0;
+    auto [ptr, ec] = std::from_chars(line.data() + 1, line.data() + line.size(), mag);
+    if (ec != std::errc{}) throw std::runtime_error("Bad integer");
+    return line[0] == 'L' ? -mag : mag;
+}
+
 int main() {
-    const auto lines = Util::LoadInput(1, Util::Part::A);
+    const auto lines = Util::LoadInput(Util::Day(1), Util::Part::A);
+    Util::Timer t;
     
     // Compute the deltas (turn eg. L14 into -14)
-    std::vector<int> deltas{50}; // We start at dial 50
-    deltas.reserve(lines.size() + 1);
-
-    std::transform(lines.cbegin(), lines.cend(), std::back_inserter(deltas), [](const std::string_view& line) {
-        int mag = 0;
-        auto [ptr, ec] = std::from_chars(line.data() + 1, line.data() + line.size(), mag);
-        if (ec != std::errc{}) throw std::runtime_error("Bad integer");
-        return line[0] == 'L' ? -mag : mag;
-    });
+    std::vector<int> deltas(lines.size() + 1);
+    deltas[0] = 50; // We start at dial 50
+    std::transform(lines.begin(), lines.end(), deltas.begin() + 1, convertLineToDelta);
 
     // Compute all the dials we see
-    std::vector<int> dials;
-    dials.reserve(lines.size() + 1);
-    std::partial_sum(deltas.cbegin(), deltas.cend(), std::back_inserter(dials));
+    std::vector<int> dials(deltas.size());
+    std::partial_sum(deltas.begin(), deltas.end(), dials.begin());
 
     // Count the dials that show 0 when accounted for modular arithmetic
-    int count = std::count_if(dials.cbegin(), dials.cend(), [](auto e) {
+    int count = std::count_if(dials.begin(), dials.end(), [](auto e) {
         return e % 100 == 0;
     });
     Util::ProvideSolution(count, Util::Part::A);
 
     // Count the number of zeroes seen between every pair of dials
     auto pairs = std::views::pairwise(dials);
-    std::vector<int> zeroCounts;
-    zeroCounts.reserve(lines.size());
-    std::transform(pairs.begin(), pairs.end(), std::back_inserter(zeroCounts), [](const auto& pair) {
+    std::vector<int> zeroCounts(lines.size());
+    std::transform(pairs.begin(), pairs.end(), zeroCounts.begin(), [](const auto& pair) {
         const auto [from, to] = pair;
         return countZeroDials(from, to);
     });
