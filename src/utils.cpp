@@ -5,6 +5,10 @@
 #include <format>
 #include <cctype>
 #include <iostream>
+#include <string>
+#include <string_view>
+#include <vector>
+#include <ranges>
 
 namespace Util {
 
@@ -56,6 +60,15 @@ std::vector<std::string> LoadInput(Day day, Part part) {
     } catch (const std::ios_base::failure& e) {
         throw std::runtime_error(std::format("Failed to read input file '{}': {}", path.string(), e.what()));
     }
+}
+
+std::vector<std::string> SplitString(const std::string& str, char splitter) {
+    return str
+        | std::views::split(splitter)
+        | std::views::transform([](auto&& view) {
+              return std::string(std::ranges::begin(view), std::ranges::end(view));
+          })
+        | std::ranges::to<std::vector>();
 }
 
 } // namespace Util

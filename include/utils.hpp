@@ -46,6 +46,9 @@ private:
 // Loads input for given day/part into vector<string>
 std::vector<std::string> LoadInput(Day day, Part part);
 
+// Splits a string based on a delimiter character
+std::vector<std::string> SplitString(const std::string& str, char splitter);
+
 template<class T>
 concept Formattable = requires {
     typename std::formatter<T>; // formatter exists
