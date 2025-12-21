@@ -1,8 +1,5 @@
 #include "utils.hpp"
 
-#include <string>
-#include <print>
-
 struct Point {
     long long x, y;
 };
@@ -93,8 +90,7 @@ int main() {
         if (DoesLineIntersectInputShape(vertiLine2, points)) continue;
 
         // Successful candidate. Pick first and break since rectangles are ordered by area
-        long long answerB = ComputeArea(rectangle);
-        Util::ProvideSolution(answerB, Util::Part::B);
+        Util::ProvideSolution(ComputeArea(rectangle), Util::Part::B);
         break;
     }
 }
