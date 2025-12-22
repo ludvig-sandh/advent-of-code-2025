@@ -40,7 +40,7 @@ int convertLineToDelta(const std::string_view& line) {
 }
 
 int main() {
-    const auto lines = Util::LoadInput(Util::Day(1), Util::Part::A);
+    const auto lines = Util::LoadInput(Util::Day(1));
     Util::Timer t;
     
     // Compute the deltas (turn eg. L14 into -14)

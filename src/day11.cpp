@@ -47,7 +47,7 @@ long long CountPaths(const Graph& reverseGraph, const Node& fromNode, const Node
 }
 
 int main() {
-    auto lines = Util::LoadInput(Util::Day(11), Util::Part::A);
+    auto lines = Util::LoadInput(Util::Day(11));
     Util::Timer t;
 
     Graph graph;

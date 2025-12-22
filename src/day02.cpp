@@ -37,7 +37,7 @@ long long dereplicate(long long val, int numCuts) {
 }
 
 int main() {
-    const std::string input = Util::LoadInput(Util::Day(2), Util::Part::A)[0];
+    const std::string input = Util::LoadInput(Util::Day(2))[0];
     Util::Timer t;
 
     // Parse into a vector of ranges represented as pairs (from, to)

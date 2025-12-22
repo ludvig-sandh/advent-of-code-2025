@@ -31,7 +31,7 @@ long long computeJolts(const auto lines, int batteries) {
 }
 
 int main() {
-    const auto lines = Util::LoadInput(Util::Day(3), Util::Part::A);
+    const auto lines = Util::LoadInput(Util::Day(3));
     Util::Timer t;
 
     Util::ProvideSolution(computeJolts(lines, 2), Util::Part::A);

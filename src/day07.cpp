@@ -19,7 +19,7 @@ std::vector<long long> computeNextRow(const std::vector<long long>& lastRow, con
 }
 
 int main() {
-    auto lines = Util::LoadInput(Util::Day(7), Util::Part::A);
+    auto lines = Util::LoadInput(Util::Day(7));
     Util::Timer t;
 
     std::vector<std::vector<long long>> grid(lines.size());

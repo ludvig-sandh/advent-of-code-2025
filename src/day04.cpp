@@ -41,7 +41,7 @@ int CountNeighboringPapers(const Sheet& sheet, int r, int c) {
 }
 
 int main() {
-    auto sheet = Util::LoadInput(Util::Day(4), Util::Part::A);
+    auto sheet = Util::LoadInput(Util::Day(4));
     Util::Timer t;
 
     const int rows = std::ssize(sheet);

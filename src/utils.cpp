@@ -48,12 +48,9 @@ static std::vector<std::string> ReadLines(const std::filesystem::path& path) {
 }
 
 // Loads input from a file with name such as "inputs/01/a.txt"
-std::vector<std::string> LoadInput(Day day, Part part) {
-    const char partChar = (part == Part::A ? 'a' : 'b');
-
-    const std::string dayDirectory = std::format("{:02d}", day.value);
-    const std::string filename = std::format("{}.txt", partChar);
-    const std::filesystem::path path = std::filesystem::path("inputs") / dayDirectory / filename;
+std::vector<std::string> LoadInput(Day day) {
+    const std::string filename = std::format("{:02d}.txt", day.value);
+    const std::filesystem::path path = std::filesystem::path("inputs") / filename;
 
     try {
         return ReadLines(path);

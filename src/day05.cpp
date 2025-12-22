@@ -37,7 +37,7 @@ std::vector<Range> MergeRanges(std::vector<Range>& ranges) {
 }
 
 int main() {
-    const auto lines = Util::LoadInput(Util::Day(5), Util::Part::A);
+    const auto lines = Util::LoadInput(Util::Day(5));
     Util::Timer t;
 
     // The blank line splits the ranges from the ingredients

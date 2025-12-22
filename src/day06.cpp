@@ -59,7 +59,7 @@ bool containsOnlySpaces(const std::string& col) {
 }
 
 int main() {
-    auto rows = Util::LoadInput(Util::Day(6), Util::Part::A);
+    auto rows = Util::LoadInput(Util::Day(6));
     Util::Timer t;
 
     auto columns = transpose(rows);

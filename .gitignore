@@ -1,2 +1,5 @@
 # Executables
 day*.exe
+
+# Inputs
+inputs/*

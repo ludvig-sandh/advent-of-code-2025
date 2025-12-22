@@ -53,7 +53,7 @@ long long GetProductOfLargestThreeValues(const std::vector<int>& list) {
 }
 
 int main() {
-    auto lines = Util::LoadInput(Util::Day(8), Util::Part::A);
+    auto lines = Util::LoadInput(Util::Day(8));
     Util::Timer t;
 
     // Create a list of points from input

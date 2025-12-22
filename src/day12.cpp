@@ -260,7 +260,7 @@ bool IsPuzzleSolvable(const std::vector<Shape>& shapes, const Puzzle& puzzle) {
 }
 
 int main() {
-    auto lines = Util::LoadInput(Util::Day(12), Util::Part::A);
+    auto lines = Util::LoadInput(Util::Day(12));
     Util::Timer t;
 
     auto shapes = LoadShapes(lines);
